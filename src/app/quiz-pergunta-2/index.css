@@ -1,0 +1,93 @@
+/* Para o componente card */
+
+
+
+.content-cards-quiz-pergunta-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    }
+    .body-card-quiz-pergunta-2{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 100px;
+    width: 514px;
+    height: 745px;
+    border-radius: 12px;
+    }
+    
+    
+    .content-button-card-quiz-pergunta{
+    display: flex;
+    justify-content: space-between;
+    
+    gap: 16px;
+    align-items: center;
+    
+    }
+    
+    
+    .content-button-card-quiz-pergunta button{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 14px;
+    color: black;
+    cursor: pointer;
+    }
+    
+    btn-button-quiz{
+    margin-right: 28px;
+    margin-top: 12px;
+    margin-bottom: 14px;
+    display: flex;
+    gap: 14px;
+    
+        
+    } 
+    
+    .btn-content-2{
+        margin-top: 15px;
+    }
+
+
+    .btn-button-finally{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .btn-button-3-2{
+    width: 424px;
+    height: 85px;
+    background-color: #FFA9A9;
+    color:black;
+    font-size: 20px;
+    font: bold;
+    display: flex;
+    flex-direction: column;
+    }
+
+
+    .btn-button-4-2{
+    width: 406px;
+    height:33px ;
+    background-color:#E1C8F4;
+    color: black;
+    font-size: 20px;
+    margin-top: 45px;
+    }
+
+
+
+    .img-button{
+    width: 15px;
+    height: 15px;
+    }

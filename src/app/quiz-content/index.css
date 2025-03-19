@@ -1,0 +1,57 @@
+/* Para o componente card */
+
+
+
+.content-cards-quiz{
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+.body-card-quiz{
+
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+margin-top: 150px;
+width: 514px;
+height: 596px;
+border-radius: 12px;
+}
+
+
+.content-button-card-quiz{
+display: flex;
+justify-content: space-between;
+
+gap: 16px;
+align-items: center;
+
+}
+
+
+.content-button-card-quiz button{
+width: 200px;
+height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-left: 14px;
+color: black;
+cursor: pointer;
+}
+
+btn-button-quiz{
+margin-right: 28px;
+margin-top: 12px;
+margin-bottom: 14px;
+display: flex;
+gap: 14px;
+
+    
+} 
+
+.btn-content-2{
+    margin-top: 15px;
+}

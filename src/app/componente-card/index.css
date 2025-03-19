@@ -1,0 +1,49 @@
+/* Para o componente card */
+
+
+
+.content-cards{
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+.body-card{
+
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+margin-top: 150px;
+width: 382px;
+height: 334px;
+border-radius: 12px;
+}
+
+
+.span-card span{
+width: 354px;
+height: 38px;
+opacity: 100%;
+}
+.button-card{
+width: 316px;
+height: 33px;
+margin: 12px;
+opacity: 100%;
+color: black;
+margin-top: 15px;
+}
+
+.card-title{
+width: 354px;
+height: 38px;
+}
+
+
+.content-button-card-quiz{
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+}
