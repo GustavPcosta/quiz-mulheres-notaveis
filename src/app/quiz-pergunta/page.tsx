@@ -1,7 +1,4 @@
 
-
-
-
 "use client";
 
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
@@ -22,36 +19,36 @@ export default function QuizPergunta() {
   const searchParams = useSearchParams();
   const router = useRouter();
   
-  // Obtém os parâmetros da URL
-  const contribution = searchParams.get("contribution") || "";
-  const optionsParam = searchParams.get("options") || "[]";
-  
-  // Get question counter and score information
-  const currentQuestion = parseInt(searchParams.get("questionNumber") || "1");
-  const totalQuestions = parseInt(searchParams.get("totalQuestions") || "5");
-  const acertos = parseInt(searchParams.get("acertos") || "0");
-  const erros = parseInt(searchParams.get("erros") || "0");
-
-  // Estado para armazenar as opções da questão
+  // Estados para armazenar os valores extraídos da URL
+  const [contribution, setContribution] = useState("");
   const [options, setOptions] = useState<AnswerOption[]>([]);
+  const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [totalQuestions, setTotalQuestions] = useState(5);
+  const [acertos, setAcertos] = useState(0);
+  const [erros, setErros] = useState(0);
 
   useEffect(() => {
+    setContribution(searchParams.get("contribution") || "");
+    setCurrentQuestion(parseInt(searchParams.get("questionNumber") || "1"));
+    setTotalQuestions(parseInt(searchParams.get("totalQuestions") || "5"));
+    setAcertos(parseInt(searchParams.get("acertos") || "0"));
+    setErros(parseInt(searchParams.get("erros") || "0"));
+
     try {
+      const optionsParam = searchParams.get("options") || "[]";
       const parsedOptions = JSON.parse(decodeURIComponent(optionsParam));
       setOptions(parsedOptions);
     } catch (error) {
       console.error("Erro ao processar opções:", error);
       setOptions([]);
     }
-  }, [optionsParam]);
+  }, [searchParams]);
 
   // Avançar para a próxima pergunta
   const handleNextQuestion = () => {
     if (currentQuestion >= totalQuestions) {
-      // This was the last question, go to conclusion
       router.push(`/quiz-concluido?acertos=${acertos}&erros=${erros}`);
     } else {
-      // Return to quiz page for next question
       router.push(`/quiz-content?currentQuestion=${currentQuestion + 1}&acertos=${acertos}&erros=${erros}`);
     }
   };
@@ -60,9 +57,6 @@ export default function QuizPergunta() {
     <div className="content-cards-quiz-pergunta">
       <Card className="body-card-quiz-pergunta p-6">
         <Image src={Logo} alt="Logo" className="mx-auto mb-4" />
-        <CardTitle className="card-title-quiz text-white font-bold text-[20px] text-center">
-          {/* Pergunta {currentQuestion} de {totalQuestions} */}
-        </CardTitle>
         <CardTitle className="card-title-quiz text-white font-bold text-[25px] text-center">
           Qual alternativa descreve essa informação?
         </CardTitle>
@@ -72,49 +66,16 @@ export default function QuizPergunta() {
         </CardDescription>
         
         <div className="content-button-card-quiz-pergunta">
-          {options.length > 0 && (
-            <>
-              <div className="btn-button-quiz">
-                <Button 
-                  className={`button-card-quiz ${options[0]?.isCorrect ? "bg-[#c8f4d3]" : "bg-gray-400"}`}
-                  disabled
-                >
-                  {options[0]?.name || ""}
-                </Button>
-                {options[1] && (
-                  <div className="btn-content-2">
-                    <Button 
-                      className={`button-card-quiz ${options[1]?.isCorrect ? "bg-[#c8f4d3]" : "bg-gray-400"}`}
-                      disabled
-                    >
-                      {options[1]?.name || ""}
-                    </Button>
-                  </div>
-                )}
-              </div>
-              
-              {options.length > 2 && (
-                <div className="btn-button-quiz">
-                  <Button 
-                    className={`button-card-quiz ${options[2]?.isCorrect ? "bg-[#c8f4d3]" : "bg-gray-400"}`}
-                    disabled
-                  >
-                    {options[2]?.name || ""}
-                  </Button>
-                  {options[3] && (
-                    <div className="btn-content-2">
-                      <Button 
-                        className={`button-card-quiz ${options[3]?.isCorrect ? "bg-[#c8f4d3]" : "bg-gray-400"}`}
-                        disabled
-                      >
-                        {options[3]?.name || ""}
-                      </Button>
-                    </div>
-                  )}
-                </div>
-              )}
-            </>
-          )}
+          {options.map((option, index) => (
+            <div key={index} className="btn-button-quiz">
+              <Button 
+                className={`button-card-quiz ${option.isCorrect ? "bg-[#c8f4d3]" : "bg-gray-400"}`}
+                disabled
+              >
+                {option.name}
+              </Button>
+            </div>
+          ))}
         </div>
         
         <div className="mt-4 text-white text-center mb-4">
@@ -122,9 +83,7 @@ export default function QuizPergunta() {
         </div>
         
         <div className="btn-button-finally">
-          <Button className="btn-button-3">
-            Correto!
-          </Button>
+          <Button className="btn-button-3">Correto!</Button>
           <Button 
             className="btn-button-4" 
             onClick={handleNextQuestion}
@@ -137,5 +96,3 @@ export default function QuizPergunta() {
     </div>
   );
 }
-
-
