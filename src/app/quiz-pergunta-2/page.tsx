@@ -25,13 +25,13 @@ export default function QuizPerguntaIncorreto() {
   const contribution = searchParams.get("contribution") || "";
   const optionsParam = searchParams.get("options") || "[]";
   
-  // Get question counter and score information
+  
   const currentQuestion = parseInt(searchParams.get("questionNumber") || "1");
   const totalQuestions = parseInt(searchParams.get("totalQuestions") || "5");
   const acertos = parseInt(searchParams.get("acertos") || "0");
   const erros = parseInt(searchParams.get("erros") || "0");
 
-  // Estado para armazenar as opções da questão
+  
   const [options, setOptions] = useState<AnswerOption[]>([]);
 
   useEffect(() => {
